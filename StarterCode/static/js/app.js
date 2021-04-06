@@ -1,20 +1,34 @@
-// read in samples.json
-function unpack(rows, index) {
-    return rows.map(function(row) {
-        return row[index];
-    });
-}
-
-function studyData() {
-    d3.json('samples.json').then(data => {
-        console.log(data);
-        let subjectID = unpack(data.dataset.data, 0)
-        console.log(subjectID)
+d3.json('samples.json').then(data => {
+    console.log(data);
 })
-}
 
 // on load (function init()), the charts and information is showing for the first person in the list
 
+let defaultData = {
+    x: [1, 2, 3, 4, 5],
+    y: [1, 2, 3, 4, 5]
+}
+
+function init() {
+    // define data
+    let trace = {
+        x: defaultData.x,
+        y: defaultData.y
+    }
+    let data = [trace]
+
+    // chart a new plot
+    Plotly.newPlot('bar', data)
+}
+
+function updatePlotly() {
+    comsole.log("Does this work?")
+}
+
+// event listener to update charts and info box upon changing the drop down selection
+d3.selectAll("#selDataset").on("change", updatePlotly)
+
+init();
 // load subjectIDs into dropdown
 
 
@@ -29,8 +43,7 @@ function studyData() {
 */
 
 
-// event listener to update charts and info box upon changing the drop down selection
-// d3.selectAll("#selDataset").on("change", getData)
+
 
 
 // // create function to run on change to reflect requested sample
