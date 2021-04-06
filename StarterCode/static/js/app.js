@@ -1,6 +1,6 @@
-d3.json('samples.json').then(data => {
-    console.log(data);
-})
+// d3.json('samples.json').then(data => {
+//     console.log(data);
+// })
 
 // on load (function init()), the charts and information is showing for the first person in the list
 
@@ -16,43 +16,28 @@ function init() {
         data.names.forEach(function(name) {
             dropdownMenu.append("option").text(name).property("value");
         });
+        // build out plotting functions to reference here and show the data on load
     });
 };
 
+// build out function to gather plot data from json data
+function getPlotData() {
+    // read in json file again and use this access to sort through the data to collect what is needed
 
+    // build trace
+    
+    // set data
 
-// let defaultData = {
-//     x: [1, 2, 3, 4, 5],
-//     y: [1, 2, 3, 4, 5]
-// }
+    // set layout
 
-// function init() {
-//     // define data
-//     let trace = {
-//         x: defaultData.x,
-//         y: defaultData.y
-//     }
-//     let data = [trace]
+    // Plotly
 
-//     // chart a new plot
-//     Plotly.newPlot('bar', data)
-// }
-
-// function updatePlotly() {
-//     let displayData = event.target.value;
-//     console.log("Does this work?");
-// }
+}
 
 // event listener to update charts and info box upon changing the drop down selection
-// d3.selectAll("#selDataset").on("change", updatePlotly)
+// d3.selectAll("#selDataset").on("change", getPlotData)
 
 init();
-// load subjectIDs into dropdown
-
-
-
-// let subjectID = Object.keys()
-// console.log(subjectID)
 
 /* create horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual
     - use sample_values as the values for the bar chart
