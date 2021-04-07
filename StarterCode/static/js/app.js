@@ -23,17 +23,30 @@ function init() {
 // build out function to gather plot data from json data
 function getPlotData() {
     // read in json file again and use this access to sort through the data to collect what is needed
+    d3.json('samples.json').then(data => {
+        console.log(data);
 
-    // build trace
-    
+        // set variables for data that needs to be collected from json
+        let sample_values = data.samples[0].sample_values;
+        let otu_ids = data.samples[0].otu_ids;
+        let otu_labels = data.samples[0].otu_labels;
+
+        // console.log to check values
+        console.log(sample_values);
+        console.log(otu_ids);
+        console.log(otu_labels);
+
+    // build trace for bar graph
+        // let trace1 = 
     // set data
 
     // set layout
 
     // Plotly
+    });
+};
 
-}
-
+getPlotData();
 // event listener to update charts and info box upon changing the drop down selection
 // d3.selectAll("#selDataset").on("change", getPlotData)
 
