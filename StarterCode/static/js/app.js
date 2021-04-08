@@ -60,6 +60,9 @@ function getMetaData(sampleID) {
     let metaData = data.metadata
     let filterResult = metaData.filter(sampleObj => sampleObj.id == sampleID);
     let result = filterResult[0];
+    let wfreq = result.wfreq;
+    // console.log(filterResult)
+    // console.log(wfreq)
 
     // select the HTML section the panel is held in
     let panel = d3.select("#sample-metadata")
@@ -69,6 +72,17 @@ function getMetaData(sampleID) {
     Object.entries(result).forEach(([key, value]) => {
         panel.append("p").text(`${key.toUpperCase()}: ${value}`);
       });
+
+    //build gauge chart
+    let trace3 = [{
+        domain: { x:[ 0, 1], y:[0, 1] },
+        value: wfreq,
+        title: { text: "Washing Frequency"},
+        type: "indicator",
+        mode: "gauge+number"
+    }]
+    Plotly.newPlot('gauge', trace3)
+
     });
 };
 
