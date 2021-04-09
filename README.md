@@ -4,3 +4,6 @@ Using data from a study done by North Carolina State University exploring the bi
 
 Explore the data through [these charts](https://laurengt.github.io/belly_button_biodiversity/) by selecting any of the subject ID numbers to have the visualizations update. 
 
+### Sample Image of Webpage
+
+![Sample Image](https://github.com/LaurenGT/belly_button_biodiversity/blob/main/Images/webpage_sample.png)
