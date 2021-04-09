@@ -40,8 +40,7 @@ function getPlotData(sampleID) {
             title: "Abundance of Microbial 'Species' (OTU)"
         }
 
-        Plotly.newPlot('bar',trace1, barLayout
-        )
+        Plotly.newPlot('bar',trace1, barLayout)
 
         // build out bubble chart
         let trace2 = [{
@@ -53,8 +52,7 @@ function getPlotData(sampleID) {
                 size: sampleValues,
                 color: otuIDs
             },
-            text: otuLabels,
-            
+            text: otuLabels   
         }]
 
         let bubbleLayout = {
