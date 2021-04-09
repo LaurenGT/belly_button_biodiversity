@@ -33,9 +33,15 @@ function getPlotData(sampleID) {
             x: sampleValues.slice(0,10).reverse(),
             y: otuIDs.slice(0,10).map(otuID => `OTU ${otuID}`).reverse(),
             orientation: 'h',
-            
+            text: otuLabels
         }];
-        Plotly.newPlot('bar',trace1)
+
+        let barLayout = {
+            title: "Abundance of Microbial 'Species' (OTU)"
+        }
+
+        Plotly.newPlot('bar',trace1, barLayout
+        )
 
         // build out bubble chart
         let trace2 = [{
@@ -45,10 +51,17 @@ function getPlotData(sampleID) {
             mode: 'markers',
             marker: { 
                 size: sampleValues,
-                color: otuIDs,
-            }
+                color: otuIDs
+            },
+            text: otuLabels,
+            
         }]
-        Plotly.newPlot('bubble', trace2)
+
+        let bubbleLayout = {
+            title: "Abundance of Microbial 'Species' (OTU)"
+        }
+
+        Plotly.newPlot('bubble', trace2, bubbleLayout)
     });
 };
 
@@ -70,18 +83,24 @@ function getMetaData(sampleID) {
     panel.html("")
     // populate the demographics panel
     Object.entries(result).forEach(([key, value]) => {
-        panel.append("p").text(`${key.toUpperCase()}: ${value}`);
+        panel.append("h6").text(`${key.toUpperCase()}: ${value}`);
       });
 
     //build gauge chart
     let trace3 = [{
-        domain: { x:[ 0, 1], y:[0, 1] },
         value: wfreq,
         title: { text: "Washing Frequency"},
         type: "indicator",
-        mode: "gauge+number"
+        mode: "gauge+number",
+        gauge:{ axis: { range: [0,9] } }
     }]
-    Plotly.newPlot('gauge', trace3)
+
+    let gaugeLayout = {
+        width: 600,
+        height:400
+    }
+
+    Plotly.newPlot('gauge', trace3, gaugeLayout)
 
     });
 };
