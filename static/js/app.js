@@ -35,11 +35,9 @@ function getPlotData(sampleID) {
             orientation: 'h',
             text: otuLabels
         }];
-
         let barLayout = {
             title: "Abundance of Microbial 'Species' (OTU)"
         }
-
         Plotly.newPlot('bar',trace1, barLayout)
 
         // build out bubble chart
@@ -54,11 +52,9 @@ function getPlotData(sampleID) {
             },
             text: otuLabels   
         }]
-
         let bubbleLayout = {
             title: "Abundance of Microbial 'Species' (OTU)"
         }
-
         Plotly.newPlot('bubble', trace2, bubbleLayout)
     });
 };
@@ -72,8 +68,6 @@ function getMetaData(sampleID) {
     let filterResult = metaData.filter(sampleObj => sampleObj.id == sampleID);
     let result = filterResult[0];
     let wfreq = result.wfreq;
-    // console.log(filterResult)
-    // console.log(wfreq)
 
     // select the HTML section the panel is held in
     let panel = d3.select("#sample-metadata")
@@ -92,14 +86,11 @@ function getMetaData(sampleID) {
         mode: "gauge+number",
         gauge:{ axis: { range: [0,9] } }
     }]
-
     let gaugeLayout = {
         width: 600,
         height:400
     }
-
     Plotly.newPlot('gauge', trace3, gaugeLayout)
-
     });
 };
 
@@ -109,5 +100,6 @@ function optionChanged(sampleID) {
     getMetaData(sampleID);
 };
 
+// run init
 init();
 
